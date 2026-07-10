@@ -1,0 +1,28 @@
+<svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Arcana app icon — the Threshold">
+  <defs>
+    <radialGradient id="night" gradientUnits="userSpaceOnUse" cx="512" cy="358" r="940">
+      <stop offset="0" stop-color="#151b32"/><stop offset="1" stop-color="#070a14"/>
+    </radialGradient>
+    <linearGradient id="gold" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ecd09a"/><stop offset="1" stop-color="#b08a44"/>
+    </linearGradient>
+    <radialGradient id="doorglow" gradientUnits="userSpaceOnUse" cx="512" cy="545" r="330">
+      <stop offset="0" stop-color="#c9a45c" stop-opacity="0.22"/><stop offset="1" stop-color="#c9a45c" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1024" height="1024" fill="url(#night)"/>
+  <circle cx="222" cy="256" r="9" fill="#e8e4d8" opacity="0.45"/>
+  <circle cx="802" cy="205" r="7.5" fill="#e8e4d8" opacity="0.35"/>
+  <circle cx="836" cy="598" r="8.5" fill="#e8e4d8" opacity="0.35"/>
+  <circle cx="171" cy="563" r="7" fill="#e8e4d8" opacity="0.3"/>
+  <circle cx="700" cy="880" r="6.5" fill="#e8e4d8" opacity="0.25"/>
+  <circle cx="512" cy="545" r="330" fill="url(#doorglow)"/>
+  <path d="M358 768 L358 461 A154 154 0 0 1 666 461 L666 768 Z"
+        fill="#04060d" stroke="url(#gold)" stroke-width="27" stroke-linejoin="round"/>
+  <circle cx="444" cy="444" r="7.5" fill="#e8e4d8" opacity="0.5"/>
+  <circle cx="580" cy="512" r="6" fill="#e8e4d8" opacity="0.4"/>
+  <circle cx="470" cy="649" r="5" fill="#e8e4d8" opacity="0.35"/>
+  <path transform="translate(512 563) scale(2.05)" fill="#e3c584"
+        d="M0 -36 C2.4 -13 13 -2.4 36 0 C13 2.4 2.4 13 0 36 C-2.4 13 -13 2.4 -36 0 C-13 -2.4 -2.4 -13 0 -36 Z"/>
+  <path d="M273 768 L751 768" stroke="#8a7140" stroke-width="21" stroke-linecap="round"/>
+</svg>
