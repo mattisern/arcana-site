@@ -39,6 +39,7 @@
   :root {
     color-scheme: dark;
     --ground: #0f0e12; --fg: #f2efe9; --fg-dim: #a4a1aa; --fg-faint: #6f6c76; --mark: #f2efe9;
+    --gold: #c9a45c;
     --alt-ground: #ffffff; --alt-fg: #0f0e12; --alt-fg-dim: #55525e; --alt-mark: #0f0e12;
   }
 
@@ -54,12 +55,6 @@
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
     overflow-x: hidden;
-  }
-
-  .grotesk {
-    font-family: "Helvetica Neue", Helvetica, "Arial Nova", Arial, sans-serif;
-    font-weight: 500;
-    text-transform: uppercase;
   }
 
   .veil {
@@ -163,20 +158,19 @@
   }
 
   .door-link {
-    font-family: "Helvetica Neue", Helvetica, "Arial Nova", Arial, sans-serif;
+    font-family: "Cormorant Garamond", Georgia, serif;
     font-weight: 500;
-    font-size: clamp(0.82rem, 1.6vw, 0.95rem);
-    letter-spacing: 0.2em;
+    font-size: clamp(1rem, 2vw, 1.2rem);
+    letter-spacing: 0.22em;
+    margin-right: -0.22em;
     text-transform: uppercase;
     color: var(--fg);
     text-decoration: none;
-    padding: 0.85rem 0.4rem;
+    padding: 0.5rem 0.4rem;
     text-align: center;
-    border-top: 1px solid var(--fg);
-    border-bottom: 1px solid var(--fg);
-    transition: opacity 0.4s ease, letter-spacing 0.4s ease;
+    transition: color 0.4s ease;
   }
-  .door-link:hover { opacity: 0.62; letter-spacing: 0.24em; }
+  .door-link:hover { color: var(--gold); }
   .door-link:focus-visible { outline: 1px solid var(--fg); outline-offset: 8px; }
 
   .vow {
@@ -233,9 +227,9 @@
 
   .privacy h2 {
     text-align: center;
-    font-family: "Helvetica Neue", Helvetica, "Arial Nova", Arial, sans-serif;
+    font-family: "Cormorant Garamond", Georgia, serif;
     font-weight: 500;
-    font-size: clamp(0.85rem, 1.7vw, 1rem);
+    font-size: clamp(1rem, 2vw, 1.15rem);
     letter-spacing: 0.34em;
     text-transform: uppercase;
     margin: 0 0 1.4rem;
