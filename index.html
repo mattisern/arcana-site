@@ -347,7 +347,15 @@ document.addEventListener('DOMContentLoaded', async function() {
     // createElement so they execute, awaiting onload for src scripts to
     // preserve ordering (React before ReactDOM before Babel before text/babel).
     const doc = new DOMParser().parseFromString(template, 'text/html');
+    // The template's head has no title, icon, or metadata of its own,
+    // so the swap must carry the outer page's across — without this
+    // the tab goes unnamed the moment the site loads (his 2026-08-31
+    // catch), and JS-rendering crawlers see a page with no description.
+    const keepHead = Array.from(document.querySelectorAll(
+      'head title, head link[rel="icon"], head meta[name="description"], head meta[property^="og:"], head meta[name^="twitter:"]'
+    )).map(function (el) { return el.cloneNode(true); });
     document.documentElement.replaceWith(doc.documentElement);
+    for (const el of keepHead) document.head.appendChild(el);
 
     // Resolve page-frame markers: mint this document's own blob for each
     // framed page — from local text when this is the root, otherwise by
