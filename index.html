@@ -22,10 +22,11 @@
     body { background: #0B0A09; display: flex; align-items: center; justify-content: center; min-height: 100vh; font-family: -apple-system, BlinkMacSystemFont, sans-serif; }
     #__bundler_loading { display: none; }
     #__bundler_thumbnail { position: fixed; inset: 0; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; background: #0B0A09; z-index: 9999; }
-    #__bundler_thumbnail svg { width: 112px; height: 112px; animation: bundler-mark-arrive .7s cubic-bezier(.22,.8,.24,1) both; }
+    /* The entrance is black, nothing else: no boot mark, no second
+       loader — the page fades in once, finished (his 2026-08-31 word:
+       the two-mark handoff read as a glitch). */
+    #__bundler_thumbnail svg { display: none; }
     #__bundler_placeholder { color: #999; font-size: 14px; }
-    @keyframes bundler-mark-arrive { from { opacity: .01; transform: scale(.88); } to { opacity: 1; transform: scale(1); } }
-    @media (prefers-reduced-motion: reduce) { #__bundler_thumbnail svg { animation: none; } }
   </style>
   <noscript>
     <style>#__bundler_loading { display: none; }</style>
@@ -310,20 +311,21 @@ document.addEventListener('DOMContentLoaded', async function() {
     const resourceScript = '<script>window.__resources = ' +
       JSON.stringify(resourceMap).replace(/<\//g, '<\\/') +
       ';</' + 'script>';
+    // The entrance, whole: a plain black cover, and one fade into the
+    // finished page (his 2026-08-31 word — the old mark-then-mark-then-
+    // slide choreography read as a glitch). The page stays hidden under
+    // the opaque cover until fonts settle, then the cover alone fades;
+    // nothing moves, nothing pulses.
     const entranceStyle = '<style>' +
-      'html:not(.site-ready) body > x-dc { visibility:hidden; opacity:0; }' +
-      '#arcana-site-loader { position:fixed; inset:0; z-index:9999; display:grid; place-items:center; background:#0B0A09; transition:opacity .36s ease-out,visibility 0s linear .36s; }' +
-      '#arcana-site-loader svg { width:64px; height:64px; animation:arcana-loader-breathe 2.4s ease-in-out infinite; }' +
+      'html:not(.site-ready) body > x-dc { visibility:hidden; }' +
+      '#arcana-site-loader { position:fixed; inset:0; z-index:9999; background:#0B0A09; transition:opacity .6s ease-out,visibility 0s linear .6s; }' +
       '.site-ready #arcana-site-loader { visibility:hidden; opacity:0; }' +
-      '.site-ready body > x-dc { animation:arcana-site-reveal .42s ease-out both; }' +
-      '@media (prefers-reduced-motion: no-preference) { .site-ready .hero-inner { animation:hero-arrive .62s cubic-bezier(.22,.8,.24,1) both; } }' +
-      '@keyframes hero-arrive { from { opacity:.01; transform:translateY(10px); } to { opacity:1; transform:translateY(0); } }' +
-      '@keyframes arcana-loader-breathe { 0%,100% { opacity:.62; transform:scale(.94); } 50% { opacity:1; transform:scale(1); } }' +
-      '@keyframes arcana-site-reveal { from { opacity:.01; } to { opacity:1; } }' +
-      '@media (prefers-reduced-motion: reduce) { #arcana-site-loader svg, .site-ready body > x-dc { animation:none; } }' +
       '</style>';
-    const loaderMarkup = '<div id="arcana-site-loader" aria-hidden="true"><svg viewBox="0 0 48 48" fill="none" stroke="#D8B778" stroke-width="1"><mask id="arcana-loader-mark"><rect width="48" height="48" fill="white"/><rect x="19.9" y="19.9" width="8.2" height="8.2" transform="rotate(45 24 24)" fill="black" stroke="none"/></mask><g mask="url(#arcana-loader-mark)"><line x1="24" y1="0" x2="24" y2="48"/><line x1="0" y1="24" x2="48" y2="24"/><line x1="12.1" y1="12.1" x2="35.9" y2="35.9"/><line x1="12.1" y1="35.9" x2="35.9" y2="12.1"/></g><rect x="20.8" y="20.8" width="6.4" height="6.4" transform="rotate(45 24 24)"/></svg></div>' +
-      '<' + 'script>(function(){var shown=false;function reveal(){if(shown)return;shown=true;requestAnimationFrame(function(){requestAnimationFrame(function(){document.documentElement.classList.add("site-ready");});});}var timeout=setTimeout(reveal,1200);if(document.fonts&&document.fonts.ready){document.fonts.ready.then(function(){clearTimeout(timeout);reveal();});}else{reveal();}}());</' + 'script>';
+    // No script rides in the template any more: the old inline reveal
+    // could be orphaned when the canvas runtime consumed the body it
+    // sat in, leaving the cover up or the fade mistimed — the glitch.
+    // The outer boot script below reveals instead; it always runs.
+    const loaderMarkup = '<div id="arcana-site-loader" aria-hidden="true"></div>';
     // Inject after <head> so the DOCTYPE stays first; prepending the script
     // would push the parser into quirks mode. DOMParser always emits a <head>
     // (synthesizing one if the source HTML omitted it) but may carry
@@ -395,9 +397,24 @@ document.addEventListener('DOMContentLoaded', async function() {
     if (window.Babel && typeof window.Babel.transformScriptTags === 'function') {
       window.Babel.transformScriptTags();
     }
+    // The entrance, second half: every template script above has been
+    // re-created and awaited, so the page is built. Give fonts up to
+    // 1.2s to settle, then fade the black cover away — the one and
+    // only move the entrance makes.
+    await Promise.race([
+      document.fonts && document.fonts.ready ? document.fonts.ready : Promise.resolve(),
+      new Promise(function (r) { setTimeout(r, 1200); }),
+    ]);
+    requestAnimationFrame(function () {
+      requestAnimationFrame(function () {
+        document.documentElement.classList.add('site-ready');
+      });
+    });
   } catch (err) {
     setStatus('Error unpacking: ' + err.message);
     console.error('Bundle unpack error:', err);
+    // Never leave the black wall standing over a broken page.
+    document.documentElement.classList.add('site-ready');
   }
 });
 
