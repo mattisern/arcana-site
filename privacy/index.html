@@ -5,70 +5,151 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Arcana — Privacy</title>
 <meta name="description" content="Arcana's privacy policy: everything you write stays on your phone.">
+<meta name="theme-color" content="#0B0A09">
+<link rel="icon" href="/icon-1024.png" type="image/png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,500;1,6..72,300&display=swap" rel="stylesheet">
 <style>
-  body { background:#EFEBDF; color:#0B0B14; font: 17px/1.6 Georgia, 'Times New Roman', serif;
-         max-width: 620px; margin: 0 auto; padding: 48px 24px 96px; }
-  h1 { font-weight: 600; font-size: 28px; margin-bottom: 4px; }
-  .by { color:#55516A; margin-top: 0; }
-  h2 { font-size: 13px; letter-spacing: 3px; color:#55516A; margin-top: 40px;
-       text-transform: uppercase; font-weight: 600; }
-  a { color:#8A6D33; }
-  .updated { color:#55516A; font-size: 14px; margin-top: 48px; }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; background: #0B0A09; }
+  body { color: #EDE9E3; font-family: 'EB Garamond', Garamond, Georgia, serif;
+         -webkit-font-smoothing: antialiased; }
+  a { color: #EDE9E3; text-decoration: none; }
+  a:hover { color: #D8B778; }
+
+  .page { display: grid; justify-items: center; padding: 120px 32px 60px; }
+
+  .hero { display: grid; justify-items: center; text-align: center; margin-bottom: 110px; }
+  .mark { margin-bottom: 44px; overflow: visible; }
+  .wordmark { font-weight: 400; font-size: 21px; letter-spacing: 0.32em; text-indent: 0.32em;
+              font-variant-caps: all-small-caps; font-feature-settings: 'c2sc' 1, 'smcp' 1;
+              color: #A5A099; }
+  .wordmark a { color: #A5A099; }
+  .wordmark a:hover { color: #D8B778; }
+  h1 { margin: 26px 0 0; font-weight: 400; font-size: clamp(44px, 6vw, 64px);
+       line-height: 1; letter-spacing: 0.05em; }
+  h1 span { font-variant-caps: all-small-caps; font-feature-settings: 'c2sc' 1, 'smcp' 1;
+            letter-spacing: 0.09em; }
+  .tagline { margin-top: 28px; font-style: italic; font-size: clamp(19px, 2.2vw, 23px); color: #A5A099; }
+
+  .sections { width: min(560px, 100%); }
+  section { padding: 56px 0; border-top: 1px solid #211E1B; }
+  section:last-of-type { border-bottom: 1px solid #211E1B; }
+  h2 { margin: 0 0 26px; font-family: Newsreader, Georgia, serif; font-size: 11px; font-weight: 500;
+       letter-spacing: 0.32em; text-transform: uppercase; color: #D8B778; text-wrap: balance; }
+  p { margin: 0; font-size: 20px; line-height: 1.6; color: #EDE9E3; text-wrap: pretty; }
+  p + p { margin-top: 22px; }
+  section p a { border-bottom: 1px solid #57534E; }
+  section p a:hover { border-color: #D8B778; }
+
+  .foot { margin-top: 110px; display: grid; justify-items: center; gap: 26px; padding-top: 44px;
+          border-top: 1px solid #1A1815; width: min(560px, 100%); text-align: center; }
+  .updated { font-family: Newsreader, Georgia, serif; font-style: italic; font-size: 15px; color: #57534E; }
+  .footer-meta { display: flex; gap: 26px; align-items: baseline; font-family: Newsreader, Georgia, serif;
+                 font-size: 10px; font-weight: 500; letter-spacing: 0.28em; text-transform: uppercase; }
+  .footer-meta span { color: #3C3833; }
+  .footer-meta a { color: #57534E; }
+  .footer-meta a:hover { color: #D8B778; }
+
+  @media (max-width: 480px) {
+    .page { padding: 88px 24px 48px; }
+    .hero { margin-bottom: 72px; }
+    section { padding: 44px 0; }
+    p { font-size: 19px; }
+    .footer-meta { display: grid; grid-template-columns: auto auto; justify-content: center;
+                   column-gap: 26px; row-gap: 18px; }
+    .footer-meta > span { grid-column: 1 / -1; }
+  }
 </style>
 </head>
 <body>
-<h1>Arcana — Privacy</h1>
-<p class="by">by <a href="https://www.lightly.io">Lightly</a></p>
+<div class="page">
 
-<h2>Everything stays on your phone</h2>
-<p>Everything you write in Arcana stays on your phone. There is no
-account and no cloud. Nobody can read what you write — not even we who
-built the app. We run no servers that store your data, no analytics,
-no trackers, and no advertising.</p>
+  <div class="hero">
+    <svg class="mark" viewBox="0 0 48 48" width="40" height="40" fill="none" stroke="#D8B778" stroke-width="1" aria-hidden="true">
+      <mask id="arcana-mark"><rect x="-2" y="-2" width="52" height="52" fill="white"></rect><rect x="19.9" y="19.9" width="8.2" height="8.2" transform="rotate(45 24 24)" fill="black" stroke="none"></rect></mask>
+      <g mask="url(#arcana-mark)"><line x1="24" y1="0" x2="24" y2="48"></line><line x1="0" y1="24" x2="48" y2="24"></line><line x1="12.1" y1="12.1" x2="35.9" y2="35.9"></line><line x1="12.1" y1="35.9" x2="35.9" y2="12.1"></line></g>
+      <rect x="20.8" y="20.8" width="6.4" height="6.4" transform="rotate(45 24 24)"></rect>
+    </svg>
+    <div class="wordmark"><a href="https://arcana.lightly.io/">Arcana</a></div>
+    <h1>P<span>rivacy</span></h1>
+    <div class="tagline">Everything you write stays on your phone.</div>
+  </div>
 
-<h2>One exception, by kind</h2>
-<p>When the app asks the wizard for advice, it sends fixed words from the
-app's own lists: the qualities you work with (&ldquo;Warmth&rdquo;),
-colour, feeling and category names, today's public sky, and short
-excerpts of the wizard's own earlier advice so it does not repeat
-itself. If you have turned the stars on, your placements ride along as
-names (&ldquo;Sun in Cancer&rdquo;); never your birth date, time, or
-place. Never your own words. Vibrational tuning is the one room where
-what you type does travel, because a conversation is that room's whole
-purpose; it is sent for the reply and kept nowhere.</p>
-<p>These requests pass through our relay, which stores nothing about
-you, to a language-model provider; no account identifier, name, or
-device identifier travels with them. Offline, the wizard speaks from the
-built-in library.</p>
-<p>Advanced Astrology is separate: once per UTC day, the relay
-calculates the public planetary positions and asks for one reading in
-all four languages. That call contains no user, device, birth or app
-data &mdash; only date-derived sky facts and Arcana's classical source
-notes &mdash; and the same reading is stored for everyone. Offline,
-Astrology uses today's cached reading when one exists.</p>
+  <div class="sections">
 
-<h2>Fixing failures</h2>
-<p>Whenever the app does not do what it should &mdash; a call that fails,
-to the wizard, the sky reading, the shelves, the Guild's store, your
-photos or the phone's own storage, or a step you could not get through,
-like the birth date and place &mdash; the phone sends one small technical
-report so we can fix it: what went wrong, in a fixed word from a list,
-how long it waited, the app build, the platform and the language. For
-daily counsel, it also carries which fixed wizard model answered, the
-candidate lane, request and response character counts and structure,
-response status, the fallback or seal decision, and which mechanical
-gate refused the reply. It never carries your writing, counsel, dates,
-places, or anything that identifies you.</p>
+    <section>
+      <h2>Everything stays on your phone</h2>
+      <p>Everything you write in Arcana stays on your phone. There is no
+      account and no cloud. Nobody can read what you write &mdash; not even we who
+      built the app. We run no servers that store your data, no analytics,
+      no trackers, and no advertising.</p>
+    </section>
 
-<h2>Your record is yours</h2>
-<p>You can export everything the app holds as one readable file, at any
-time, from Settings &mdash; and delete it all just as easily. If you delete
-the app, the record goes with it; we could not recover it for you even
-if you asked, because we never had it.</p>
+    <section>
+      <h2>One exception, by kind</h2>
+      <p>When the app asks the wizard for advice, it sends fixed words from the
+      app's own lists: the qualities you work with (&ldquo;Warmth&rdquo;),
+      colour, feeling and category names, today's public sky, and short
+      excerpts of the wizard's own earlier advice so it does not repeat
+      itself. If you have turned the stars on, your placements ride along as
+      names (&ldquo;Sun in Cancer&rdquo;); never your birth date, time, or
+      place. Never your own words. Vibrational tuning is the one room where
+      what you type does travel, because a conversation is that room's whole
+      purpose; it is sent for the reply and kept nowhere.</p>
+      <p>These requests pass through our relay, which stores nothing about
+      you, to a language-model provider; no account identifier, name, or
+      device identifier travels with them. Offline, the wizard speaks from the
+      built-in library.</p>
+      <p>Advanced Astrology is separate: once per UTC day, the relay
+      calculates the public planetary positions and asks for one reading in
+      all four languages. That call contains no user, device, birth or app
+      data &mdash; only date-derived sky facts and Arcana's classical source
+      notes &mdash; and the same reading is stored for everyone. Offline,
+      Astrology uses today's cached reading when one exists.</p>
+    </section>
 
-<h2>Questions</h2>
-<p>Write to <a href="mailto:mattis@lightly.io">mattis@lightly.io</a>.</p>
+    <section>
+      <h2>Fixing failures</h2>
+      <p>Whenever the app does not do what it should &mdash; a call that fails,
+      to the wizard, the sky reading, the shelves, the Guild's store, your
+      photos or the phone's own storage, or a step you could not get through,
+      like the birth date and place &mdash; the phone sends one small technical
+      report so we can fix it: what went wrong, in a fixed word from a list,
+      how long it waited, the app build, the platform and the language. For
+      daily counsel, it also carries which fixed wizard model answered, the
+      candidate lane, request and response character counts and structure,
+      response status, the fallback or seal decision, and which mechanical
+      gate refused the reply. It never carries your writing, counsel, dates,
+      places, or anything that identifies you.</p>
+    </section>
 
-<p class="updated">Last updated: September 7, 2026 · <a href="https://arcana.lightly.io">arcana.lightly.io</a></p>
+    <section>
+      <h2>Your record is yours</h2>
+      <p>You can export everything the app holds as one readable file, at any
+      time, from Settings &mdash; and delete it all just as easily. If you delete
+      the app, the record goes with it; we could not recover it for you even
+      if you asked, because we never had it.</p>
+    </section>
+
+    <section>
+      <h2>Questions</h2>
+      <p>Write to <a href="mailto:mattis@lightly.io">mattis@lightly.io</a>.</p>
+    </section>
+
+  </div>
+
+  <div class="foot">
+    <svg viewBox="0 0 48 48" width="26" height="26" fill="none" stroke="#57534E" stroke-width="1.4" aria-hidden="true">
+      <mask id="arcana-mark-foot"><rect width="48" height="48" fill="white"></rect><rect x="19.9" y="19.9" width="8.2" height="8.2" transform="rotate(45 24 24)" fill="black" stroke="none"></rect></mask>
+      <g mask="url(#arcana-mark-foot)"><line x1="24" y1="0" x2="24" y2="48"></line><line x1="0" y1="24" x2="48" y2="24"></line><line x1="12.1" y1="12.1" x2="35.9" y2="35.9"></line><line x1="12.1" y1="35.9" x2="35.9" y2="12.1"></line></g>
+      <rect x="20.8" y="20.8" width="6.4" height="6.4" transform="rotate(45 24 24)"></rect>
+    </svg>
+    <div class="updated">Last updated September 7, 2026</div>
+    <div class="footer-meta"><span>Arcana · MMXXVI</span><a href="https://arcana.lightly.io/">Home</a><a href="https://lightly.io" target="_blank" rel="noopener">By Lightly</a></div>
+  </div>
+
+</div>
 </body>
 </html>
